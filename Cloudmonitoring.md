@@ -3,7 +3,7 @@ Monitoring and Alerting with CloudWatch
 •	create an AMI from the existing Web Server 1 Instance  
 •	In the left navigation pane, locate the Instances section, and choose Instances. 
 •	From the Actions dropdown list, choose Image and templates > Create image, and then configure the following. 
-  ![AMI Creation Screenshot]("C:\Users\Lenovo\OneDrive\Pictures\Screenshots\Screenshot 2025-06-20 133047.png")
+  ![AMI Creation Screenshot](images/"C:\Users\Lenovo\OneDrive\Pictures\Screenshots\Screenshot 2025-06-20 133047.png")
 2 Creating a load Balancer 
 •	In the left navigation pane, locate the Load Balancing section, and choose Load Balancers 
 •	In the Load balancer types section, for Application Load Balancer, choose Create. 
