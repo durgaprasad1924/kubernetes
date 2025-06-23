@@ -95,7 +95,7 @@ eksctl version
 ## **1. Creating an EKS Cluster**  
 To create an EKS cluster with `eksctl`:  
 ```bash
-eksctl create cluster --name=ekswithavinash \
+eksctl create cluster --name=ekswithdurga \
   --version 1.31 \
   --region=ap-south-1 \
   --zones=ap-south-1a,ap-south-1b \
@@ -140,7 +140,7 @@ In simple terms, it helps your EKS workloads securely access AWS services **with
 Run:
 
 ```bash
-aws eks describe-cluster --name ekswithavinash --region ap-south-1 --query "cluster.identity.oidc.issuer" --output text
+aws eks describe-cluster --name ekswithdurga --region ap-south-1 --query "cluster.identity.oidc.issuer" --output text
 ```
 If an **OIDC URL** is returned, it already exists. If **empty**, you need to create it.
 
@@ -151,7 +151,7 @@ If an **OIDC URL** is returned, it already exists. If **empty**, you need to cre
 ```bash
 eksctl utils associate-iam-oidc-provider \
   --region ap-south-1 \
-  --cluster ekswithavinash \
+  --cluster ekswithadurga \
   --approve
 ```
 
@@ -163,7 +163,7 @@ This registers the **OIDC provider** with IAM.
 Run:
 
 ```bash
-aws iam list-open-id-connect-providers | grep $(aws eks describe-cluster --name ekswithavinash --region ap-south-1 --query "cluster.identity.oidc.issuer" --output text | sed 's|https://||')
+aws iam list-open-id-connect-providers | grep $(aws eks describe-cluster --name ekswithdurga --region ap-south-1 --query "cluster.identity.oidc.issuer" --output text | sed 's|https://||')
 ```
 
 If it returns an `arn:aws:iam::xxxxx:oidc-provider/`, OIDC is successfully associated.
