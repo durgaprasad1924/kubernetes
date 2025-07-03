@@ -116,7 +116,7 @@ Create a node group manually, we can use below command.
 
 ```bash
 eksctl create nodegroup \
-  --cluster ekswithavinash \
+  --cluster ekswithdurga \
   --name managed-ng \
   --node-type t3.small \
   --nodes 2 \
@@ -184,7 +184,7 @@ kubectl get all
 
 ### **Delete an EKS Cluster**  
 ```bash
-eksctl delete cluster --name=ekswithavinash
+eksctl delete cluster --name=ekswithdurga
 ```
 
 ---
