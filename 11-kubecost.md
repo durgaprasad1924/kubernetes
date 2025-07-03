@@ -5,7 +5,7 @@
 Create or update your kubeconfig file so that `kubectl` can connect to your EKS cluster.
 
 ```bash
-aws eks update-kubeconfig --region ap-south-1 --name ekswithavinash
+aws eks update-kubeconfig --region ap-south-1 --name ekswithdurga
 ```
 
 This command fetches the cluster details and updates your local kubeconfig.
@@ -17,7 +17,7 @@ This command fetches the cluster details and updates your local kubeconfig.
 Set your cluster name in an environment variable:
 
 ```bash
-cluster_name=ekswithavinash
+cluster_name=ekswithdurga
 ```
 
 Extract the OIDC ID from your cluster:
@@ -37,7 +37,7 @@ aws iam list-open-id-connect-providers | grep $oidc_id | cut -d "/" -f4
 - **If no output is returned:** Create an IAM OIDC provider for your cluster:
 
 ```bash
-eksctl utils associate-iam-oidc-provider --cluster ekswithavinash --approve
+eksctl utils associate-iam-oidc-provider --cluster ekswithdurga --approve
 ```
 
 ---
@@ -47,14 +47,14 @@ eksctl utils associate-iam-oidc-provider --cluster ekswithavinash --approve
 eksctl create iamserviceaccount   \
    --name ebs-csi-controller-sa   \
    --namespace kube-system   \
-   --cluster ekswithavinash  \
+   --cluster ekswithdurga  \
    --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy  \
    --approve \
    --role-only \
    --role-name AmazonEKS_EBS_CSI_DriverRole
 ```
  **Description:**  
-- Creates an IAM service account (`ebs-csi-controller-sa`) in the `kube-system` namespace for the EKS cluster named `ekswithavinash`.
+- Creates an IAM service account (`ebs-csi-controller-sa`) in the `kube-system` namespace for the EKS cluster named `ekswithdurga`.
 - The service account is attached to the `AmazonEBSCSIDriverPolicy` to provide permissions required by the Amazon EBS CSI driver.
 - The `--role-only` option creates the IAM role (`AmazonEKS_EBS_CSI_DriverRole`) without associating it with the service account immediately.
 - `--approve` automatically applies the configuration.
@@ -73,11 +73,11 @@ export SERVICE_ACCOUNT_ROLE_ARN=arn:aws:iam::501170964283:role/AmazonEKS_EBS_CSI
 
 ### 5. Create the EBS CSI Driver Add-on
 ```bash
-eksctl create addon --name aws-ebs-csi-driver --cluster ekswithavinash \
+eksctl create addon --name aws-ebs-csi-driver --cluster ekswithdurga \
    --service-account-role-arn $SERVICE_ACCOUNT_ROLE_ARN --force
 ```
  **Description:**  
-- Creates the `aws-ebs-csi-driver` add-on in the `ekswithavinash` cluster.
+- Creates the `aws-ebs-csi-driver` add-on in the `ekswithdurga` cluster.
 - Associates the add-on with the IAM role stored in the `SERVICE_ACCOUNT_ROLE_ARN` variable.
 - `--force` forces the add-on creation even if it already exists or is partially installed.
 
